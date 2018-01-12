@@ -35,7 +35,6 @@ function test() {
     console.log(a);
     linear_A.insertNodeAtPosition(2,80);
     console.log(a);
-    //[3, 2, 33, 21, 1, 9]
     linear_A.deleteNodeByPosition(5);
     console.log(a);
 }
