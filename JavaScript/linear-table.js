@@ -6,7 +6,6 @@ var LinearTable = function () {
     this.linear = null;
 };
 
-
 /**
  * 初始线性表
  * 
@@ -114,4 +113,16 @@ LinearTable.prototype.deleteNodeByPosition = function (pos) {
     }
     this.linear.length--;
     return true;
+}
+
+/**
+ * 返回线性表的描述对象
+ * 
+ * @returns 
+ */
+LinearTable.prototype.toObject = function () {
+    return {
+        values: this.linear,
+        length: this.getLength()
+    }
 }
