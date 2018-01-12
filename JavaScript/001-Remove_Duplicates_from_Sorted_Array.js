@@ -8,7 +8,7 @@ Your function should return length = 2, and A is now [1,2] .
 
 */
 
-function solution(A) {
+function solution1(A) {
     var linear_A = new LinearTable();
     var a = linear_A.initLinearTable(A);
     for (var i = 0; i < linear_A.getLength() - 1; i++) {
@@ -20,9 +20,38 @@ function solution(A) {
     return linear_A.toObject();
 }
 
+function solution2(A) {
+    if (A.length == 0) return 0;
+
+    var inx = 1;
+    var len = A.length;
+    for (var i = 1; i < len; i++) {
+        if (A[i] != A[inx - 1]) {
+            A[inx] = A[i];
+            inx++;
+        }
+    }
+    A.length = inx;
+    return {
+        values: A,
+        length: inx
+    };
+}
+
 function test() {
-    console.log(solution([1, 1, 1, 1, 2, 2, 3, 3, 3, 5, 5]));
-    console.log(solution([1, 3, 3, 5]));
+    var times = 99;
+
+    console.time('s1');
+    // for (var i = 0; i < times; i++)
+        console.log(solution1([1, 1, 1, 1, 2, 2, 3, 3, 3, 5, 5]));
+        
+    console.timeEnd('s1')
+
+    console.time('s2');
+    // for (var j = 0; j < times; j++)
+        console.log(solution2([1, 1, 1, 1, 2, 2, 3, 3, 3, 5, 5]));
+        
+    console.timeEnd('s2')
 }
 
 test();
